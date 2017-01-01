@@ -1,0 +1,33 @@
+---
+layout: slide
+title: "The IIFE"
+---
+
+<h3>{{ page.title }}</h3>
+
+
+<p>See this little thing on the end of our module?</p>
+<pre>
+  <code>
+    ...}());
+  </code>
+</pre>
+<ul>
+  <li class="fragment">
+    That's an IIFE, which stands for "Immediately-Invoked Function Expression"
+  </li>
+  <li class="fragment">
+    Since our module is implemented as a function, invoking it
+    immediately defines the module, including all the inner function
+    definitions
+  </li>
+  <li class="fragment">
+    By returning the <code>vm</code> object we defined inside the
+    module function, we gain access to all the methods and properties.
+  </li>
+</ul>
+<aside class="notes">
+  Remember that when we want to <em>call</em> a function, we add the
+  parentheses pair after it's name. The IIFE calls the function we've
+  just defined immediately after it's defined.
+</aside>

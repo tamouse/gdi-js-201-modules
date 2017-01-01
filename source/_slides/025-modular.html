@@ -1,0 +1,93 @@
+---
+layout: slide
+title: "Counter Module (POJS)"
+---
+
+<h3>{{ page.title }}</h3>
+
+<pre>
+  <code class="javascript">
+var counter = (function() {
+  var vm = {};
+  var value = 0; // private!
+  vm.init = function(addButton, subtractButton, resultArea) {
+    vm.addButton = addButton;
+    vm.subtractButton = subtractButton;
+    vm.resultDiv = resultArea;
+
+    vm.addButton.addEventListener('click', vm.add);
+    vm.subtractButton.addEventListener('click', vm.subtract);
+    vm.resultDiv.addEventListener('valueUpdated', vm.display);
+    vm.reset();
+  }
+  vm.add = function() {
+    value++;
+    vm.display();
+  }
+  vm.subtract = function() {
+    value--;
+    vm.display();
+  }
+  vm.reset = function() {
+    value = 0;
+    vm.display();
+  }
+  vm.display = function() {
+    vm.resultDiv.innerHTML = value;
+  }
+  return vm;
+}());
+counter.init(
+  document.getElementById('add'),
+  document.getElementById('subtract'),
+  document.getElementById('result')
+);
+  </code>
+</pre>
+
+<p class="">
+  <a href="http://codepen.io/tamouse/pen/rebvyP?editors=0010"
+     target="_blank" title="See this example in CodePen"
+     >
+    CodePen Example: http://codepen.io/tamouse/pen/rebvyP
+  </a>
+</p>
+
+<aside class="notes">
+  <ul>
+    <li>
+      "POJS" == "Plain Old JavaScript"
+    </li>
+    <li>
+      Separating the display function out separates the concerns of
+      performing the counter operations from the concern of updating
+      the data.
+    </li>
+    <li>
+      In a future refactoring, the display functionality would be
+      moved even further and put into it's own module, and we'd use
+      events to keep things decoupled.
+    </li>
+    <li>
+      The reason the three elements are passed in during
+      the <code>init()</code> method invocation is to break the
+      dependency between the module and the exact implmentation of the
+      HTML.
+    </li>
+    <li>
+      In most circumstances, you want your modules to be reusable across
+      projects, or even within the same project, without tying them
+      directly to other parts of the project. You'll also likely be
+      keeping the module code in a separate file, and invoking it in
+      another place.
+    </li>
+    <li>
+      By passing the elements into <code>init()</code>, the module is
+      able to deal with what it needs to, without being <em>coupled</em>
+      to the HTML implementation.
+    </li>
+    <li>
+      This is generally referred to as <em>injection</em>.
+    </li>
+  </ul>
+</aside>

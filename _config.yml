@@ -1,15 +1,16 @@
-title: Your Awesome Class
-author: Your Name
+title: JavaScript Module Form
+author: Tamara Temple
 description: >-
 
-  Your awesome class in all its glory.
+  Modern way to construct and organize your JS code.
 
 keywords:
   - GDI
   - GDIMpls
   - Girl Develop It
   - Class
-  - Awesome
+  - JavaScript
+  - Modules
 
 # This is general info for GDIMpls
 contact:
@@ -19,17 +20,13 @@ contact:
   twitter: "gdimpls"
   github: "gdiminneapolis"
 
-# Replace <HASHTAG> with something appropriate for your course, like #LearnJS or #IntroToPython
-# Replace <AUTHOR> with your twitter handle
-# use other twitter tags as you'd like
-# These appear in the footer of the slides
 tweet_tags:
-  - url: "https://twitter.com/search?q=%23<HASHTAG>&src=typd"
-    text: "#<HASHTAG>"
-    title: "Search #<HASHTAG> on Twitter"
-  - url: "https://twitter.com/<AUTHOR>"
-    text: "@<AUTHOR>"
-    title: "@<AUTHOR> on Twitter"
+  - url: "https://twitter.com/search?q=%23learnJS&src=typd"
+    text: "#learnJS"
+    title: "Search #learnJS on Twitter"
+  - url: "https://twitter.com/tamouse"
+    text: "@tamouse"
+    title: "@tamouse on Twitter"
   - url: "https://twitter.com/gdimpls"
     text: "@GDIMpls"
     title: "@GDIMpls on Twitter"

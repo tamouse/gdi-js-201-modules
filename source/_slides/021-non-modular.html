@@ -1,0 +1,26 @@
+---
+layout: slide
+title: ""
+---
+
+<h3>{{ page.title }}</h3>
+
+
+<p>
+  And yesterday's implementation (non-jQuery):
+</p>
+<pre class="">
+  <code class="javascript">
+    var result = document.getElementById("result");
+    var addButton = document.getElementById("add");
+    var subtractButton = document.getElementById("subtract");
+
+    addButton.addEventListener('click', function(){
+      result.innerHTML = parseInt(result.innerHTML) + 1;
+    });
+
+    subtractButton.addEventListener('click', function(){
+      result.innerHTML = parseInt(result.innerHTML) - 1;
+    });
+  </code>
+</pre>

@@ -11,5 +11,5 @@
 # for the repository name.
 url: "https://gdiminneapolis.github.io"
 # Change this to the name of your repository. Make sure it starts with a forward slash "/"
-baseurl: "/jekyll-reveal-starter-kit"
+baseurl: "/gdi-js-201-modules"
 destination: "docs"

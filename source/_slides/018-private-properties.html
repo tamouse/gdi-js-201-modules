@@ -1,0 +1,33 @@
+---
+layout: slide
+title: "Private Module Parts"
+---
+
+<h3>{{ page.title }}</h3>
+
+
+
+<p>
+  You can also define variables and methods that are <em>only</em>
+  available in the module.
+</p>
+<pre>
+  <code>
+    var youCantSeeMe = "this is my own variable";
+
+    function youCantCallMe(p1) {
+      return "You can't call me";
+    }
+  </code>
+</pre>
+<p>
+  This keeps the scope of <code>youCantSeeMe</code>
+  and <code>youCantCallMe</code> within the module, and not viewable
+  or callable from outside.
+</p>
+<p>
+  <a href="http://codepen.io/tamouse/pen/RaOeYY?editors=0010"
+     target="_blank">
+    Codepen Example: http://codepen.io/tamouse/pen/RaOeYY
+  </a>
+</p>

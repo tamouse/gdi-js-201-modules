@@ -1,0 +1,51 @@
+.counter {
+    font-size: 60pt;
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+}
+
+.counter .buttons {
+
+}
+
+.counter .buttons button {
+    background-color: #2a4758;
+    color: #fff;
+    font-size: 32pt;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    outline: 0;
+    border: 0;
+    padding-bottom: 20px;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+    -ms-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+}
+
+.counter .buttons button:hover {
+    cursor: pointer;
+    background-color: #d9b06f;
+}
+
+.counter .buttons button:active {
+    transform: scale(0.95);
+}
+
+.counter .result {
+    width: 100%;
+    text-align: center;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.counter .result.changing {
+    color: #f95a61;
+    transform: scale(1.2);
+}

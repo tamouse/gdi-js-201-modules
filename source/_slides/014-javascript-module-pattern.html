@@ -1,0 +1,37 @@
+---
+layout: slide
+title: "JavaScript Module Pattern"
+---
+
+<h3>{{ page.title }}</h3>
+
+<pre>
+  <code class="javascript">
+    var myModule = (function() {
+      var vm = {};
+      // module code implemented here
+      return vm;
+    })();
+  </code>
+</pre>
+<p>&nbsp;</p>
+<p class="fragment">
+  <small>
+    The <code>vm</code> variable refers to the
+    term "View Model".
+  </small>
+</p>
+
+<aside class="notes">
+  <ul>
+    <li>
+      "View Model" is distinct from the Model-View-Controller paradigm.
+      It refers more to a model (i.e. code) that implements the needs of a
+      particular view.
+    </li>
+    <li>
+      <code>vm</code> is a convention for naming the inner variable used
+      in a module that works on a particular view.
+    </li>
+  </ul>
+</aside>

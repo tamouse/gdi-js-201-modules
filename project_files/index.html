@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GDI Intermediate JS - Counter Example</title>
+    <link rel="stylesheet" href="counter.css">
+</head>
+<body>
+
+<div id="counter1" class="counter" style="background-color: papayawhip">
+    <div class="result">0</div>
+    <div class="buttons">
+        <button class="adder">+</button>
+        <button class="subtractor">-</button>
+        <button class="reset">x</button>
+    </div>
+</div>
+
+<div id="counter2" class="counter" style="background-color: tomato">
+    <div class="result">0</div>
+    <div class="buttons">
+        <button class="adder">+</button>
+        <button class="subtractor">-</button>
+        <button class="reset">x</button>
+    </div>
+</div>
+
+<div id="counter3" class="counter" style="background-color: mediumaquamarine">
+    <div class="result">0</div>
+    <div class="buttons">
+        <button class="adder">+</button>
+        <button class="subtractor">-</button>
+        <button class="reset">x</button>
+    </div>
+</div>
+
+<script src="counter.js"></script>
+<script>
+    var counter1 = Counter(document.getElementById('counter1'));
+    var counter2 = Counter(document.getElementById('counter2'));
+    var counter3 = Counter(document.getElementById('counter3'));
+</script>
+</body>
+</html>

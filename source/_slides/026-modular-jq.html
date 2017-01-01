@@ -1,0 +1,66 @@
+---
+layout: slide
+title: "Counter Module using jQuery"
+---
+
+<h3>{{ page.title }}</h3>
+
+
+{% highlight javascript linenos %}
+var counter = (function() {
+  var vm = {};
+  var value = 0; // private!
+  vm.init = function(displayArea, incrementer, decrementer) {
+    vm.displayArea = displayArea;
+    vm.incrementer = incrementer;
+    vm.decrementer = decrementer;
+
+    vm.incrementer.on('click', vm.add);
+    vm.decrementer.on('click', vm.subtract);
+
+    vm.reset();
+  }
+  vm.add = function() {
+    value++;
+    vm.display();
+  }
+  vm.subtract = function() {
+    value--;
+    vm.display();
+  }
+  vm.reset = function() {
+    value = 0;
+    vm.display();
+  }
+  vm.display = function() {
+    vm.displayArea.text(value);
+    vm.displayArea.addClass("changing");
+    setTimeout(function() {
+      vm.displayArea.removeClass("changing");
+    }, 1000);
+  }
+  return vm;
+}());
+counter.init($('#result'), $("#add"), $('#subtract'));;
+{% endhighlight %}
+
+<p class="">
+  <a href="http://codepen.io/tamouse/pen/EKJpyQ?editors=0010"
+     target="_blank" title="Codepen Example jQuery">
+    Codepen Example: http://codepen.io/tamouse/pen/EKJpyQ
+  </a>
+</p>
+
+<aside class="notes">
+  <ul>
+    <li>
+      Similar to the POJS example, the jQuery example makes use
+      of <em>injection</em> to <em>decouple</em> the counter module
+      from the HTML implementation.
+    </li>
+    <li>
+      We still get to use the very nice jQuery methods instead of the
+      clunky native DOM methods.
+    </li>
+  </ul>
+</aside>
