@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript Module Form</title>
+  <meta name="description" content="
+Modern way to construct and organize your JS code.">
+  <meta name="author" content="Tamara Temple">
+  <meta name="keywords" content="GDI, GDIMpls, Girl Develop It, Class, JavaScript, Modules">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.min.css">
+  <link rel="stylesheet" href="//gdimpls.s3.amazonaws.com/reveal.js/css/theme/gdidefault.css">
+  <link rel="stylesheet" href="/gdi-js-201-modules/css/main.css">
+</head>
+
+  <body>
+    <div class="reveal">
+  <div class="slides">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    
+    <section class="">
+  <h3>JavaScript Module Pattern</h3>
+<h6>Supplement to Intermediate JavaScript</h6>
+<ul>
+  <li>
+    <strong>Slides:</strong>
+    <a href="https://gdiminneapolis.github.io/gdi-js-201-modules/"
+       target="_blank">
+      https://gdiminneapolis.github.io/gdi-js-201-modules/
+    </a>
+  </li>
+
+  <li>
+    <strong>Printable slides with notes:</strong>
+    <a href="https://gdiminneapolis.github.io/gdi-js-201-modules/print.html"
+       target="_blank">
+      https://gdiminneapolis.github.io/gdi-js-201-modules/print.html
+    </a>
+  </li>
+
+  <li>
+    <strong>Project Files:</strong>
+    <a href="https://github.com/gdiminneapolis/js-201-module-supplement/releases/download/v1.0.0/project_files.zip"
+       target="_blank">
+      https://github.com/gdiminneapolis/js-201-module-supplement/releases/download/v1.0.0/project_files.zip
+    </a>
+
+  </li>
+
+  <li>
+    <strong>View on Github:</strong>
+    <a href="https://github.com/gdiminneapolis/js-201-module-supplement"
+       target="_blank">
+      https://github.com/gdiminneapolis/js-201-module-supplement
+    </a>
+  </li>
+
+</ul>
+
+</section>
+
+    
+    <section class="">
+  <h3>Introduction</h3>
+<p>
+  Yesterday, we covered how to use javascript libraries.
+</p>
+<p class="">
+  Today, I want to add a bit of information on structuring your
+  javascript code.
+</p>
+<p class="">
+  I'm going to dicuss <strong><em>Modularity</em></strong>.
+</p>
+
+</section>
+
+    
+    <section class="">
+  <h3>What is "Modularity"?</h3>
+
+<blockquote class="">
+  <p>
+    The degree to which a system's components may be separated and recombined.
+  </p>
+</blockquote>
+
+</section>
+
+    
+    <section class="">
+  <h3>Software Modularity</h3>
+
+<ul>
+  <li>
+    In software
+    development, <strong><em class="pink">modularity</em></strong>
+    refers to how the code is organized into self-contained units.
+  </li>
+  <li>
+    This <strong><em class="green">improves</em></strong> the ability
+    of the developers to test and maintain the software.
+  </li>
+  <li>
+    It <strong><em class="green">decreases</em></strong> the
+    likelihood of software collisions.
+  </li>
+
+</ul>
+
+</section>
+
+    
+    <section class="">
+  <h3>Modularity in JavaScript</h3>
+
+<ul>
+  <li>
+    In JavaScript, the Module Pattern has become a very common coding
+    pattern.
+  </li>
+  <li>
+    It provides the means for modularity as discussed on the
+    previous slide, as well as being the basis for all modern JS
+    Libraries and Frameworks.
+  </li>
+</ul>
+
+</section>
+
+    
+    <section class="">
+  <h3>JavaScript Module Pattern</h3>
+
+<pre>
+  <code class="javascript">
+    var myModule = (function() {
+      var vm = {};
+      // module code implemented here
+      return vm;
+    })();
+  </code>
+</pre>
+<p>&nbsp;</p>
+<p class="fragment">
+  <small>
+    The <code>vm</code> variable refers to the
+    term "View Model".
+  </small>
+</p>
+
+<aside class="notes">
+  <ul>
+    <li>
+      "View Model" is distinct from the Model-View-Controller paradigm.
+      It refers more to a model (i.e. code) that implements the needs of a
+      particular view.
+    </li>
+    <li>
+      <code>vm</code> is a convention for naming the inner variable used
+      in a module that works on a particular view.
+    </li>
+  </ul>
+</aside>
+
+</section>
+
+    
+    <section class="">
+  <h3>The IIFE</h3>
+
+
+<p>See this little thing on the end of our module?</p>
+<pre>
+  <code>
+    ...}());
+  </code>
+</pre>
+<ul>
+  <li class="fragment">
+    That's an IIFE, which stands for "Immediately-Invoked Function Expression"
+  </li>
+  <li class="fragment">
+    Since our module is implemented as a function, invoking it
+    immediately defines the module, including all the inner function
+    definitions
+  </li>
+  <li class="fragment">
+    By returning the <code>vm</code> object we defined inside the
+    module function, we gain access to all the methods and properties.
+  </li>
+</ul>
+<aside class="notes">
+  Remember that when we want to <em>call</em> a function, we add the
+  parentheses pair after it's name. The IIFE calls the function we've
+  just defined immediately after it's defined.
+</aside>
+
+</section>
+
+    
+    <section class="">
+  <h3>Defining the Module</h3>
+
+
+<p>
+  We define the module by setting <em>properties</em> on the <em>view
+  model</em> <code>vm</code>.
+</p>
+<p class="fragment">We can define module variables:</p>
+<pre class="fragment">
+  <code>
+    vm.counterValue = 0;
+  </code>
+</pre>
+<p class="fragment">We can define module functions:</p>
+<pre class="fragment">
+  <code>
+    vm.increment = function() {
+      // ...
+    }
+  </code>
+</pre>
+
+</section>
+
+    
+    <section class="">
+  <h3>Private Module Parts</h3>
+
+
+
+<p>
+  You can also define variables and methods that are <em>only</em>
+  available in the module.
+</p>
+<pre>
+  <code>
+    var youCantSeeMe = "this is my own variable";
+
+    function youCantCallMe(p1) {
+      return "You can't call me";
+    }
+  </code>
+</pre>
+<p>
+  This keeps the scope of <code>youCantSeeMe</code>
+  and <code>youCantCallMe</code> within the module, and not viewable
+  or callable from outside.
+</p>
+<p>
+  <a href="http://codepen.io/tamouse/pen/RaOeYY?editors=0010"
+     target="_blank">
+    Codepen Example: http://codepen.io/tamouse/pen/RaOeYY
+  </a>
+</p>
+
+</section>
+
+    
+    <section class="">
+  <h3>Remember yesterday's Counter example?</h3>
+
+
+<pre class="">
+  <code class="HTML">
+    &lt;div id="counter"&gt;
+      &lt;div id="result"&gt;&lt;/div&gt;
+      &lt;button id="subtract"&gt;-&lt;/button&gt;
+      &lt;button id="add"&gt;+&lt;/button&gt;
+    &lt;/div&gt;
+  </code>
+</pre>
+
+</section>
+
+    
+    <section class="">
+  <h3></h3>
+
+
+<p>
+  And yesterday's implementation (non-jQuery):
+</p>
+<pre class="">
+  <code class="javascript">
+    var result = document.getElementById("result");
+    var addButton = document.getElementById("add");
+    var subtractButton = document.getElementById("subtract");
+
+    addButton.addEventListener('click', function(){
+      result.innerHTML = parseInt(result.innerHTML) + 1;
+    });
+
+    subtractButton.addEventListener('click', function(){
+      result.innerHTML = parseInt(result.innerHTML) - 1;
+    });
+  </code>
+</pre>
+
+</section>
+
+    
+    <section class="">
+  <h3>Counter Module (POJS)</h3>
+
+<pre>
+  <code class="javascript">
+var counter = (function() {
+  var vm = {};
+  var value = 0; // private!
+  vm.init = function(addButton, subtractButton, resultArea) {
+    vm.addButton = addButton;
+    vm.subtractButton = subtractButton;
+    vm.resultDiv = resultArea;
+
+    vm.addButton.addEventListener('click', vm.add);
+    vm.subtractButton.addEventListener('click', vm.subtract);
+    vm.resultDiv.addEventListener('valueUpdated', vm.display);
+    vm.reset();
+  }
+  vm.add = function() {
+    value++;
+    vm.display();
+  }
+  vm.subtract = function() {
+    value--;
+    vm.display();
+  }
+  vm.reset = function() {
+    value = 0;
+    vm.display();
+  }
+  vm.display = function() {
+    vm.resultDiv.innerHTML = value;
+  }
+  return vm;
+}());
+counter.init(
+  document.getElementById('add'),
+  document.getElementById('subtract'),
+  document.getElementById('result')
+);
+  </code>
+</pre>
+
+<p class="">
+  <a href="http://codepen.io/tamouse/pen/rebvyP?editors=0010"
+     target="_blank" title="See this example in CodePen"
+     >
+    CodePen Example: http://codepen.io/tamouse/pen/rebvyP
+  </a>
+</p>
+
+<aside class="notes">
+  <ul>
+    <li>
+      "POJS" == "Plain Old JavaScript"
+    </li>
+    <li>
+      Separating the display function out separates the concerns of
+      performing the counter operations from the concern of updating
+      the data.
+    </li>
+    <li>
+      In a future refactoring, the display functionality would be
+      moved even further and put into it's own module, and we'd use
+      events to keep things decoupled.
+    </li>
+    <li>
+      The reason the three elements are passed in during
+      the <code>init()</code> method invocation is to break the
+      dependency between the module and the exact implmentation of the
+      HTML.
+    </li>
+    <li>
+      In most circumstances, you want your modules to be reusable across
+      projects, or even within the same project, without tying them
+      directly to other parts of the project. You'll also likely be
+      keeping the module code in a separate file, and invoking it in
+      another place.
+    </li>
+    <li>
+      By passing the elements into <code>init()</code>, the module is
+      able to deal with what it needs to, without being <em>coupled</em>
+      to the HTML implementation.
+    </li>
+    <li>
+      This is generally referred to as <em>injection</em>.
+    </li>
+  </ul>
+</aside>
+
+</section>
+
+    
+    <section class="">
+  <h3>Counter Module using jQuery</h3>
+
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre></td><td class="code"><pre><span class="kd">var</span> <span class="nx">counter</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">vm</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// private!</span>
+  <span class="nx">vm</span><span class="p">.</span><span class="nx">init</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">displayArea</span><span class="p">,</span> <span class="nx">incrementer</span><span class="p">,</span> <span class="nx">decrementer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">displayArea</span> <span class="o">=</span> <span class="nx">displayArea</span><span class="p">;</span>
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">incrementer</span> <span class="o">=</span> <span class="nx">incrementer</span><span class="p">;</span>
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">decrementer</span> <span class="o">=</span> <span class="nx">decrementer</span><span class="p">;</span>
+
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">incrementer</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">vm</span><span class="p">.</span><span class="nx">add</span><span class="p">);</span>
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">decrementer</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="nx">vm</span><span class="p">.</span><span class="nx">subtract</span><span class="p">);</span>
+
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">reset</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nx">vm</span><span class="p">.</span><span class="nx">add</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">value</span><span class="o">++</span><span class="p">;</span>
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">display</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nx">vm</span><span class="p">.</span><span class="nx">subtract</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">value</span><span class="o">--</span><span class="p">;</span>
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">display</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nx">vm</span><span class="p">.</span><span class="nx">reset</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">display</span><span class="p">();</span>
+  <span class="p">}</span>
+  <span class="nx">vm</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">displayArea</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+    <span class="nx">vm</span><span class="p">.</span><span class="nx">displayArea</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">"changing"</span><span class="p">);</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">vm</span><span class="p">.</span><span class="nx">displayArea</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">"changing"</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">vm</span><span class="p">;</span>
+<span class="p">}());</span>
+<span class="nx">counter</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="s1">'#result'</span><span class="p">),</span> <span class="nx">$</span><span class="p">(</span><span class="s2">"#add"</span><span class="p">),</span> <span class="nx">$</span><span class="p">(</span><span class="s1">'#subtract'</span><span class="p">));;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
+
+<p class="">
+  <a href="http://codepen.io/tamouse/pen/EKJpyQ?editors=0010"
+     target="_blank" title="Codepen Example jQuery">
+    Codepen Example: http://codepen.io/tamouse/pen/EKJpyQ
+  </a>
+</p>
+
+<aside class="notes">
+  <ul>
+    <li>
+      Similar to the POJS example, the jQuery example makes use
+      of <em>injection</em> to <em>decouple</em> the counter module
+      from the HTML implementation.
+    </li>
+    <li>
+      We still get to use the very nice jQuery methods instead of the
+      clunky native DOM methods.
+    </li>
+  </ul>
+</aside>
+
+</section>
+
+    
+    <section class="">
+  <h3>Resources</h3>
+
+<ul>
+
+  <li>
+    Nice article:
+    <a href="http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html"
+       target="_blank">
+      JavaScript Module Pattern: In-Depth
+    </a>
+    by
+    <a href="http://twitter.com/bcherry" target="_blank">
+      ben cherry
+    </a>
+  </li>
+
+  <li>
+    <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md#modules"
+       target="_blank">
+      Modules
+    </a>
+    section in
+    <a href="https://github.com/getify/You-Dont-Know-JS"
+       target="_blank">
+      You Don't Know JS
+    </a>,
+    <a href="https://github.com/getify/You-Dont-Know-JS/tree/master/scope%20%26%20closures"
+       target="_blank">
+      Scopes &amp; Closures
+    </a>,
+    <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md"
+       target="_blank">
+      Chapter 5: Scope Closure
+    </a>
+    by
+    <a href="https://github.com/getify"
+       target="_blank">
+      Kyle Simpson (@getify)
+    </a>
+  </li>
+
+</ul>
+
+</section>
+
+    
+  </div><!-- .slides -->
+  <footer>
+  <div class="copyright">
+    
+    <a href="" target="_blank">
+      #learnJS
+    </a>
+    &bullet;
+    
+    <a href="" target="_blank">
+      @tamouse
+    </a>
+    &bullet;
+    
+    <a href="" target="_blank">
+      @GDIMpls
+    </a>
+    &bullet;
+    
+    <a rel="license" href="//creativecommons.org/licenses/by-nc/3.0/deed.en_US">
+      <img
+	 alt="Creative Commons License" style="border-width:0"
+	 src="//i.creativecommons.org/l/by-nc/3.0/80x15.png"/>
+    </a>
+  </div>
+</footer>
+
+</div><!-- .reveal -->
+<script src="//cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.min.js"></script>
+<script src="/gdi-js-201-modules/js/revealConfig.js"></script>
+
+
+  </body>
+</html>
